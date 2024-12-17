@@ -1,19 +1,23 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from './Components/loginForm/loginForm.jsx';
-import HomePage from './Components/Home/Home.jsx';
+import Home from './Components/Home/Home.jsx';
 import Payment from './Components/Payment/payment.jsx';
-import Register from './Components/loginForm/registerForm.jsx';
+import RegisterPage from './Components/loginForm/registerForm.jsx';
 
 
-export default function App() {
+function App() {
+  const isLoggedIn = !!localStorage.getItem('isLoggedIn'); // Check login status
+
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
-        <Route path="/Home" element={<HomePage />} />
-        <Route path="/" element={<LoginPage />} />
-        <Route path="/Payment" element={<Payment />} />
-        <Route path="/Register" element={<Register />} />
+        <Route path="/" element={isLoggedIn ? <Home /> : <Navigate to="/login" />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }
+
+export default App;
