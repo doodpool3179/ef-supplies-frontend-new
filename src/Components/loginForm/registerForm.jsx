@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './loginForm.css';
+import Nav from '../Navbar/Navbar.jsx'
 import { Link } from 'react-router-dom';
 
 const RegisterPage = () => {
@@ -27,6 +28,7 @@ const RegisterPage = () => {
   
     return(
     <div>
+        <Nav></Nav>
         <div className='wrapper'>
             <form onSubmit={handleSubmit}>
                 <h1>Register</h1>

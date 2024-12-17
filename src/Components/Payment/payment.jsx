@@ -1,13 +1,15 @@
 import React from "react";
 import './Payment.css'
 import cards from '../Assests/payments.png'
+import Nav from '../Navbar/Navbar.jsx'
 //import { Link } from 'react-router-dom'
 
 const Payment = () => {
     return(
+        
         <body>
             <link rel="stylesheet" href="Payment.css"></link>
-
+            <Nav></Nav>
             <div class ="container">
                 <form action="">
                     <div class="row">

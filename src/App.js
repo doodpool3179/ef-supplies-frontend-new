@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from './Components/loginForm/loginForm.jsx';
-import Home from './Components/Home/Home.jsx';
+import Home from './Components/Home/Homev2.jsx';
 import Payment from './Components/Payment/payment.jsx';
 import RegisterPage from './Components/loginForm/registerForm.jsx';
 

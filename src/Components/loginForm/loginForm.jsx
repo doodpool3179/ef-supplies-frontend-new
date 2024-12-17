@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './loginForm.css';
+import Nav from '../Navbar/Navbar'
 import { Link } from 'react-router-dom';
 
 const LoginPage = () => {
@@ -27,7 +28,9 @@ const LoginPage = () => {
     };
 
     return(
+    
     <div>
+        <Nav></Nav>
         <div className='wrapper'>
             <form onSubmit={handleSubmit}>
                 <h1>Login</h1>
