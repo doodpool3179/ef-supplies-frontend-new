@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './loginForm.css';
-import Nav from '../Navbar/Navbar.jsx'
-import { Link } from 'react-router-dom';
-import { AiFillInstagram } from "react-icons/ai";
+import { AiFillInstagram, AiOutlineWhatsApp, AiFillFacebook, AiFillTikTok } from "react-icons/ai";
 
 const RegisterPage = () => {
     const [formData, setFormData] = useState({ name: '', email: '', password: '' });
@@ -82,8 +80,17 @@ const RegisterPage = () => {
                 <br></br><br></br>
                 <p>Check out our social media for more information about us:</p>
                 <div className="icons">
-                    <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
-                        <AiFillInstagram size={40} />
+                    <a href="https://www.instagram.com/ef-supplies" target="_blank" rel="noopener noreferrer">
+                        <AiFillInstagram size={75} />
+                    </a>
+                    <a href="https://www.whatsapp.com/ef-supplies" target="_blank" rel="noopener noreferrer">
+                        <AiOutlineWhatsApp size={75} />
+                    </a>
+                    <a href="https://www.facebook.com/ef-supplies" target="_blank" rel="noopener noreferrer">
+                        <AiFillFacebook size={75} />
+                    </a>
+                    <a href="https://www.tiktok.com/ef-supplies" target="_blank" rel="noopener noreferrer">
+                        <AiFillTikTok size={75} />
                     </a>
                 </div>
             </div>
