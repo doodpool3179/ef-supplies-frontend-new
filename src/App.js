@@ -1,19 +1,24 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import LoginPage from './Components/loginForm/loginForm.jsx';
-import HomePage from './Components/Home/Home.jsx';
+import Home from './Components/Home/Homev3.jsx';
+import RegisterPage from './Components/loginForm/registerForm.jsx';
+import Navbar from './Components/Navbar/Navbar.jsx';
 import Payment from './Components/Payment/payment.jsx';
-import Register from './Components/loginForm/registerForm.jsx';
 
+function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('isLoggedIn'));
 
-export default function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
-        <Route path="/Home" element={<HomePage />} />
-        <Route path="/" element={<LoginPage />} />
-        <Route path="/Payment" element={<Payment />} />
-        <Route path="/Register" element={<Register />} />
+        <Route path="/" element={isLoggedIn ? <Home /> : <Navigate to="/login" />} />
+        <Route path="/login" element={<LoginPage setIsLoggedIn={setIsLoggedIn} />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/payment" element={<Payment />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }
+
+export default App;
