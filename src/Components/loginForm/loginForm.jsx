@@ -26,7 +26,7 @@ const LoginPage = ({ setIsLoggedIn }) => {
         // Clear errors and make API call
         setError('');
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/login`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}api/login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),
@@ -44,10 +44,13 @@ const LoginPage = ({ setIsLoggedIn }) => {
     };
 
     return(
-    
-    <div>
-        <div className='wrapper'>
-            <form onSubmit={handleSubmit}>
+        <div className="login-container">
+        <div className="welcome-section">
+            <h1>Welcome Back!</h1>
+            <p>Access to all your needs is just a few clicks away.</p>
+        </div>
+        <div className="form-section">
+            <form onSubmit={handleSubmit} novalidate>
                 <h1>Login</h1>
                 {error && <p style={{ color: 'red' }}>{error}</p>}
                 <div className= "input-box">
