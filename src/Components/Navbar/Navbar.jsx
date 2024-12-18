@@ -1,19 +1,28 @@
 import React from "react";
-import './Navbar.css'
+import './Navbar.css';
+import { Link, useNavigate } from 'react-router-dom';
 
-const Navbar = () => {
-    return(
-        <header className="header">
-            <a href="/" className="logo">Education First</a>
+const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
+  const navigate = useNavigate();
 
-            <nav className="navbar">
-                <a href="/">Home</a>
-                <a href="/login">Login</a>
-                <a href="/Register">Register</a>
-            </nav>
-        </header>
+  const handleLogout = () => {
+    localStorage.removeItem('isLoggedIn');
+    setIsLoggedIn(false);
+    navigate('/login');
+  };
 
-    )
-}
+  return (
+    <header className="header">
+      <a href="/" className="logo">Education First</a>
 
-export default Navbar
+      <nav className="navbar">
+        <Link to="/">Home</Link>
+        {!isLoggedIn && <Link to="/login">Login</Link>}
+        {!isLoggedIn && <Link to="/register">Register</Link>}
+        {isLoggedIn && <Link onClick={handleLogout}>Logout</Link>}
+      </nav>
+    </header>
+  );
+};
+
+export default Navbar;

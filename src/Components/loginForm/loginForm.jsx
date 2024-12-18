@@ -4,36 +4,52 @@ import './loginForm.css';
 import Nav from '../Navbar/Navbar'
 import { Link } from 'react-router-dom';
 
-const LoginPage = () => {
+const LoginPage = ({ setIsLoggedIn }) => {
     const [formData, setFormData] = useState({ email: '', password: '' });
+    const [error, setError] = useState('');
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        // Client-side validation
+        if (!formData.email || !formData.password) {
+            setError('Both fields are required.');
+            return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(formData.email)) {
+            setError('Invalid email format.');
+            return;
+        }
+        // Clear errors and make API call
+        setError('');
         try {
-            const response = await fetch('http://localhost:3001/api/login', {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),
-        });
-        if (response.ok) {
-            localStorage.setItem('isLoggedIn', 'true'); // Store login token
-            navigate('/'); // Redirect to Home page
-        } else {
-            console.error('Login failed');
-        }
+            });
+            if (response.ok) {
+                localStorage.setItem('isLoggedIn', 'true');
+                navigate('/'); // Redirect to Home page
+            } else {
+                setError('Invalid email or password.');
+            }
         } catch (error) {
-          console.error('Error:', error);
+            setError('An error occurred. Please try again later.');
+            console.error(error);
         }
     };
 
     return(
     
     <div>
-        <Nav></Nav>
         <div className='wrapper'>
             <form onSubmit={handleSubmit}>
                 <h1>Login</h1>
+                {error && <p style={{ color: 'red' }}>{error}</p>}
                 <div className= "input-box">
                     <input
                         type="email"
@@ -54,7 +70,7 @@ const LoginPage = () => {
                 </div>
                 <div className= "remember-forget">
                     <label><input type="checkbox" />Remember me</label>
-                    <a href="#">Forget password?</a>
+                    <a>Forget password?</a>
                 </div>
 
                 <button type="submit">Login</button>

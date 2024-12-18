@@ -7,7 +7,6 @@ import "./Homev2.css"
 const Home = () => {
     return(
         <div>
-        <Nav></Nav>
             <div className="shop">
                 <div className="shopTitle">
                 <h1>EF Supplies</h1>
