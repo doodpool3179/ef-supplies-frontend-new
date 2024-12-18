@@ -13,7 +13,7 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
 
   return (
     <header className="header">
-      <a href="/" className="logo">Education First</a>
+      <a href="/" className="logo">EF Supplies</a>
 
       <nav className="navbar">
         <Link to="/">Home</Link>
