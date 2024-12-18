@@ -43,7 +43,7 @@ const RegisterPage = () => {
             return;
         }
 
-        if (!/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(formData.password)) {
+        if (!/[!@#$%^&*()_+\-={};':"|,.<>?]/.test(formData.password)) {
             setError("Password must contain at least one special character.")
             return;
         }
@@ -95,7 +95,7 @@ const RegisterPage = () => {
                 </div>
             </div>
             <div className="form-section">
-                <form onSubmit={handleSubmit} novalidate>
+                <form onSubmit={handleSubmit} noValidate>
                     <h1>Register</h1>
                     {error && <p className="error-message">{error}</p>}
                     <div className= "input-box">
@@ -104,7 +104,7 @@ const RegisterPage = () => {
                             placeholder="Name"
                             value={formData.name}
                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                            novalidate
+                            noValidate
                         />
                     </div>                
                     <div className= "input-box">
@@ -113,7 +113,7 @@ const RegisterPage = () => {
                             placeholder="Email"
                             value={formData.email}
                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                            novalidate
+                            noValidate
                         />
                     </div>
                     <div className= "input-box">
@@ -122,7 +122,7 @@ const RegisterPage = () => {
                             placeholder="Password"
                             value={formData.password}
                             onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                            novalidate
+                            noValidate
                         />
                     </div>  
 
@@ -130,7 +130,7 @@ const RegisterPage = () => {
                     <button type="submit">Register</button>
 
                     <div className="register-link">
-                        <p>Have an account? <a href="/">Login</a></p>
+                        <p>Have an account? <a href="/login">Login</a></p>
                     </div>
                 </form>
             </div>

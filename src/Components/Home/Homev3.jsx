@@ -1,12 +1,9 @@
 import React from 'react';
-import Nav from '../Navbar/Navbar.jsx'
-import { PRODUCTS } from "../../products.js";
-import { Product } from "./product";
+import Navbar from '../Navbar/Navbar.jsx'
 import "./Homev3.css"
 import toiletries from "../Assests/images/pic01.jpg";
 import kitchen from "../Assests/images/pic03.jpg";
 import supplies from "../Assests/images/schoolpak.png";
-import plates from "../Assests/images/plates.png"
 import pot from "../Assests/images/pot3.png"
 import toaster from "../Assests/images/toaster.png"
 import mug from "../Assests/images/mug.png"
@@ -22,11 +19,8 @@ import indexcards from "../Assests/images/indexcards-1.png"
 
 const Home = () => {
     return(
-    
-    
-
         <body>
-
+        <Navbar />
         <div class = "products">
             <div class = "container">
         

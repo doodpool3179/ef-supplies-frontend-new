@@ -23,6 +23,7 @@ img{
 .container{
     width: 88vw;
     margin: 0 auto;
+    padding-top: 70px;
 }
 .lg-title,
 .md-title,

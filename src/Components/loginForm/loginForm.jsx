@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './loginForm.css';
-import Nav from '../Navbar/Navbar'
-import { Link } from 'react-router-dom';
+import closedBox from "../Assests/images/pic02.jpg";
 
 const LoginPage = ({ setIsLoggedIn }) => {
     const [formData, setFormData] = useState({ email: '', password: '' });
@@ -33,6 +32,7 @@ const LoginPage = ({ setIsLoggedIn }) => {
             });
             if (response.ok) {
                 localStorage.setItem('isLoggedIn', 'true');
+                setIsLoggedIn(true);
                 navigate('/'); // Redirect to Home page
             } else {
                 setError('Invalid email or password.');
@@ -48,18 +48,19 @@ const LoginPage = ({ setIsLoggedIn }) => {
         <div className="welcome-section">
             <h1>Welcome Back!</h1>
             <p>Access to all your needs is just a few clicks away.</p>
+            <img src = {closedBox} height={350} alt = "product image"></img>
         </div>
         <div className="form-section">
-            <form onSubmit={handleSubmit} novalidate>
+            <form onSubmit={handleSubmit} noValidate>
                 <h1>Login</h1>
-                {error && <p style={{ color: 'red' }}>{error}</p>}
+                {error && <p className="error-message">{error}</p>}
                 <div className= "input-box">
                     <input
                         type="email"
                         placeholder="Email"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        required
+                        noValidate
                     />
                 </div>                
                 <div className= "input-box">
@@ -68,12 +69,12 @@ const LoginPage = ({ setIsLoggedIn }) => {
                         placeholder="Password"
                         value={formData.password}
                         onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                        required
+                        noValidate
                     />
                 </div>
                 <div className= "remember-forget">
                     <label><input type="checkbox" />Remember me</label>
-                    <a>Forget password?</a>
+                    <a>Forgot password?</a>
                 </div>
 
                 <button type="submit">Login</button>
