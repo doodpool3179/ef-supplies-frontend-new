@@ -48,3 +48,15 @@ a {
 {
     width: 100%
 }
+
+.centerlogo {
+    width: 300px;
+    position: relative;
+    padding-left: 120px;
+}
+
+.greeting {
+    font-size: 18px;
+    color: #fff;
+    font-weight: 500;
+}
