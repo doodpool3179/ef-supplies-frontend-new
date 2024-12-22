@@ -31,7 +31,7 @@ const LoginPage = ({ setIsLoggedIn }) => {
                 body: JSON.stringify(formData),
             });
             if (response.ok) {
-                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('isLoggedIn', true);
                 setIsLoggedIn(true);
                 navigate('/'); // Redirect to Home page
             } else {

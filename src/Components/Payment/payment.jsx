@@ -8,7 +8,6 @@ const Payment = () => {
     return(
         
         <div>
-            <Navbar />
             <div className="pcontainer">
                 <form action="">
                     <div className="prow">
@@ -88,7 +87,7 @@ const Payment = () => {
                             </div>
 
                             <div className="pflex">
-                                <div class="pinput-box">
+                                <div className="pinput-box">
                                     <span>State :</span>
                                     <input type="text"
                                     placeholder="New York">
