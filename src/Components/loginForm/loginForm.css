@@ -143,8 +143,9 @@ code {
 
 .form-section button:hover {
     background: rgb(53, 128, 56);
-    scale: 1.02;
+    scale: 1.01;
     transition: scale 100ms;
+    transition: background 500ms;
 }
 
 .form-section .register-link {

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
+import EFlogo from '../Assests/EF-logo.png'
 
 const Navbar = ({ isLoggedIn, setIsLoggedIn, cart, user }) => {
   const navigate = useNavigate();
@@ -25,8 +26,9 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn, cart, user }) => {
     {isLoggedIn && (
       <header className="header">
         <a href="/" className="logo">EF Supplies</a>
+        <img className="centerlogo" src={EFlogo} alt="EF logo"></img>
         <nav className="navbar">
-            <span className="greeting">Hi, User</span>
+            <span className="greeting">Hi, {user.name || "User"}</span>
               <Link to="/cart" className="cart">
                 Bag (0)
               </Link>

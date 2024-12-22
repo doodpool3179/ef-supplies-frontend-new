@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './loginForm.css';
 import closedBox from "../Assests/images/pic02.jpg";
 
-const LoginPage = ({ setIsLoggedIn }) => {
+const LoginPage = ({ setIsLoggedIn, setUser}) => {
     const [formData, setFormData] = useState({ email: '', password: '' });
     const [error, setError] = useState('');
     const navigate = useNavigate();
@@ -31,8 +31,12 @@ const LoginPage = ({ setIsLoggedIn }) => {
                 body: JSON.stringify(formData),
             });
             if (response.ok) {
+                const data = await response.json(); // Backend response containing user details
+                console.log('Login successful:', data);
                 localStorage.setItem('isLoggedIn', true);
+                localStorage.setItem('user', JSON.stringify(data.user)); // Store user details
                 setIsLoggedIn(true);
+                setUser(data.user); // Pass user details to App.js
                 navigate('/'); // Redirect to Home page
             } else {
                 setError('Invalid email or password.');

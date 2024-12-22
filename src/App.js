@@ -8,10 +8,12 @@ import Navbar from './Components/Navbar/Navbar.jsx'
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('isLoggedIn'));
+  const [user, setUser] = useState(() => JSON.parse(localStorage.getItem('user')) || {});
 
   useEffect(() => {
     const handleStorageChange = () => {
       setIsLoggedIn(!!localStorage.getItem('isLoggedIn'));
+      setUser(JSON.parse(localStorage.getItem('user')) || {});
     };
 
     window.addEventListener('storage', handleStorageChange);
@@ -25,10 +27,10 @@ function App() {
 
   return (
     <Router>
-      <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+      <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} user={user} />
       <Routes>
         <Route path="/" element={isLoggedIn ? <Home /> : <Navigate to="/login" />} />
-        <Route path="/login" element={<LoginPage setIsLoggedIn={setIsLoggedIn} />} />
+        <Route path="/login" element={<LoginPage setIsLoggedIn={setIsLoggedIn} setUser={setUser}/>} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/payment" element={isLoggedIn ? <Payment /> : <Navigate to="/login" />} />
       </Routes>
