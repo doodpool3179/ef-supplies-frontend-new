@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from '../Navbar/Navbar.jsx';
 import { Kit, Product } from '../Product/product.jsx';
 import "./Homev3.css";
 
@@ -40,9 +39,8 @@ const kitMapping = {
     "Student Supplies": { image: supplies, discountPrice: 89.99 },
 };
 
-const Home = () => {
+const Home = ({ addToCart }) => {
     const [products, setProducts] = useState([]);
-    const [cart, setCart] = useState([]);
   
     // Fetch products from the backend
     useEffect(() => {
@@ -51,7 +49,7 @@ const Home = () => {
           const response = await fetch(`${process.env.REACT_APP_API_URL}api/products`);
           if (response.ok) {
             const data = await response.json();
-            setProducts(data);
+            setProducts(data.map((product) => ({ ...product, price: parseFloat(product.price) })));
           } else {
             console.error('Failed to fetch products');
           }
@@ -62,11 +60,6 @@ const Home = () => {
   
       fetchProducts();
     }, []);
-  
-    const addToCart = (product) => {
-      setCart((prevCart) => [...prevCart, product]);
-      alert(`${product.name} added to cart!`);
-    };
 
   return (
     <>

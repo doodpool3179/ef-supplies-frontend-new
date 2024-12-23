@@ -29,8 +29,8 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn, cart, user }) => {
         <img className="centerlogo" src={EFlogo} alt="EF logo"></img>
         <nav className="navbar">
             <span className="greeting">Hi, {user.name || "User"}</span>
-              <Link to="/cart" className="cart">
-                Bag (0)
+              <Link to="/cart" className="cart-nav-button">
+                Cart ({cart.reduce((acc, item) => acc + item.quantity, 0)})
               </Link>
               <Link onClick={handleLogout} className="logout">
                 Logout
